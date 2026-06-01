@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     startCountUpAnimation();
     startImageLoop();
+    startPaintingGalleryModal();
 });
 
 function startCountUpAnimation() {
@@ -47,4 +48,31 @@ function startImageLoop() {
         current = (current + 1) % images.length;
         images[current].classList.add("active");
     }, 5000);
+}
+
+function startPaintingGalleryModal() {
+    const paintingButtons = document.querySelectorAll("[data-painting-src]");
+    const modalElement = document.getElementById("paintingLightbox");
+    const modalImage = document.getElementById("paintingLightboxImage");
+
+    if (!paintingButtons.length || !modalElement || !modalImage || !window.bootstrap) {
+        return;
+    }
+
+    const lightbox = new bootstrap.Modal(modalElement);
+
+    paintingButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            const previewImage = button.querySelector("img");
+
+            modalImage.src = button.dataset.paintingSrc;
+            modalImage.alt = previewImage ? previewImage.alt : "Painting";
+            lightbox.show();
+        });
+    });
+
+    modalElement.addEventListener("hidden.bs.modal", () => {
+        modalImage.removeAttribute("src");
+        modalImage.alt = "";
+    });
 }
