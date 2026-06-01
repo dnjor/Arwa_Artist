@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap");
-
 :root {
     --text: #231942;
     --muted: #746a92;
@@ -63,6 +61,11 @@ img {
     max-width: 100%;
     height: auto;
     border-radius: 24px;
+}
+
+picture {
+    display: block;
+    max-width: 100%;
 }
 
 .site-shell {
@@ -161,6 +164,12 @@ img {
     direction: ltr;
 }
 
+.logo-container picture {
+    flex: 0 0 30px;
+    width: 30px;
+    max-width: 30px;
+}
+
 .logo {
     width: 30px;
     height: 30px;
@@ -185,10 +194,6 @@ img {
     gap: 0.15rem;
 }
 
-.brand-copy strong {
-    font-size: 1.05rem;
-}
-
 .nav-inline {
     display: flex;
     align-items: center;
@@ -198,8 +203,7 @@ img {
     direction: rtl;
 }
 
-.nav-inline a,
-.button-link {
+.nav-inline a {
     border: 0;
     border-radius: 999px;
     background: rgba(106, 92, 255, 0.09);
@@ -222,26 +226,9 @@ img {
     background: transparent;
 }
 
-.nav-inline a:hover,
-.button-link:hover {
+.nav-inline a:hover {
     transform: translateY(-1px);
     text-decoration: none;
-}
-
-.button-link.primary {
-    background: var(--accent);
-    color: #fff;
-    box-shadow: 0 14px 30px rgba(118, 88, 250, 0.24);
-}
-
-.button-link.primary:hover {
-    box-shadow: 0 18px 34px rgba(118, 88, 250, 0.28);
-}
-
-.button-link.secondary {
-    background: var(--accent-soft);
-    color: #7353ff;
-    box-shadow: none;
 }
 
 .page-card {
@@ -281,8 +268,7 @@ img {
 }
 
 .home-copy,
-.home-visual,
-.home-cta {
+.home-visual {
     direction: rtl;
 }
 
@@ -312,6 +298,14 @@ img {
     place-items: center;
     min-height: 380px;
     isolation: isolate;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.home-visual picture {
+    display: grid;
+    place-items: center;
+    max-width: 100%;
 }
 
 .home-visual::before {
@@ -345,6 +339,8 @@ img {
     position: relative;
     z-index: 1;
     width: min(100%, 320px);
+    max-width: 100%;
+    height: auto;
     border-radius: 28px;
     object-fit: contain;
 }
@@ -402,6 +398,14 @@ img {
     max-width: 500px !important;
 }
 
+.div-gallery-container > picture {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    max-width: 100%;
+}
+
 .painting-gallery-section {
     padding-inline: 0;
 }
@@ -423,12 +427,22 @@ img {
 
 .painting-gallery-item {
     flex-basis: clamp(210px, 28vw, 340px);
+    max-width: min(78vw, 340px);
     scroll-snap-align: start;
     cursor: pointer;
+    overflow: hidden;
+}
+
+.painting-gallery-item picture {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
 }
 
 .painting-gallery-image {
     width: 100%;
+    max-width: 100%;
+    height: auto;
     aspect-ratio: 4 / 5;
     object-fit: cover;
     border-radius: 24px;
@@ -455,6 +469,7 @@ img {
 
 .painting-lightbox-image {
     max-width: 100%;
+    height: auto;
     max-height: 86vh;
     object-fit: contain;
     border-radius: 18px;
@@ -511,6 +526,15 @@ img {
     align-items: center;
     justify-content: center;
     font-weight: 800;
+}
+
+.site-footer-brand-image picture,
+.site-footer-brand-image img {
+    width: 90px;
+    max-width: 100%;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 8px;
 }
 
 @keyframes floatOrb {
@@ -585,6 +609,12 @@ img {
         flex-basis: 40px;
     }
 
+    .logo-container picture {
+        flex-basis: 40px;
+        width: 40px;
+        max-width: 40px;
+    }
+
     .site-name {
         font-weight: bold;
         font-size: 14px;
@@ -619,11 +649,6 @@ img {
         padding: 0.9rem 0.6rem 1.5rem;
     }
 
-    .site-nav a,
-    .button-link {
-        width: 100%;
-    }
-
     .page-title {
         font-size: 2rem;
     }
@@ -648,13 +673,13 @@ img {
         min-height: 250px;
     }
 
+    .home-image {
+        width: min(100%, 280px);
+    }
+
     .home-image--hand {
         width: min(100%, 260px);
         transform: none;
-    }
-
-    .home-cta {
-        justify-content: center;
     }
 
     .painting-gallery-heading {
@@ -668,6 +693,7 @@ img {
 
     .painting-gallery-item {
         flex-basis: min(72vw, 280px);
+        max-width: min(72vw, 280px);
     }
 
     .painting-lightbox-close {
