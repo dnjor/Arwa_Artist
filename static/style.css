@@ -162,8 +162,11 @@ img {
 }
 
 .logo {
-    width: 44px;
-    height: 44px;
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+    object-fit: cover;
+    object-position: center;
     border-radius: 14px;
     background: var(--accent);
     color: #fff;
@@ -172,7 +175,9 @@ img {
     justify-content: center;
     font-weight: 800;
     box-shadow: 0 10px 25px rgba(130, 91, 248, 0.28);
+    padding: 2px;
 }
+
 
 .site-name {
     display: flex;
@@ -575,8 +580,9 @@ img {
     }
 
     .logo {
-        height: 34px;
-        width: 34px;
+        height: 40px;
+        width: 40px;
+        flex-basis: 40px;
     }
 
     .site-name {
