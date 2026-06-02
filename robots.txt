@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://dnjor.github.io/Arwa_Artist/sitemap.xml
