@@ -9,28 +9,4 @@
     <priority>1.0</priority>
   </url>
 
-  <!-- About Me Section -->
-  <url>
-    <loc>https://dnjor.github.io/Arwa_Artist/#about</loc>
-    <lastmod>2026-06-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Gallery Section -->
-  <url>
-    <loc>https://dnjor.github.io/Arwa_Artist/#painting-gallery</loc>
-    <lastmod>2026-06-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Workshop Section -->
-  <url>
-    <loc>https://dnjor.github.io/Arwa_Artist/#workshop</loc>
-    <lastmod>2026-06-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
 </urlset>
