@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     startCountUpAnimation();
     startImageLoop();
     startPaintingGalleryModal();
+    startWorkshopCarousel();
 });
 
 function startCountUpAnimation() {
@@ -74,5 +75,42 @@ function startPaintingGalleryModal() {
     modalElement.addEventListener("hidden.bs.modal", () => {
         modalImage.removeAttribute("src");
         modalImage.alt = "";
+    });
+}
+
+function startWorkshopCarousel() {
+    const track = document.querySelector("[data-workshop-track]");
+    const previousButton = document.querySelector("[data-workshop-prev]");
+    const nextButton = document.querySelector("[data-workshop-next]");
+
+    if (!track || !previousButton || !nextButton) {
+        return;
+    }
+
+    const scrollByVideo = (direction) => {
+        const firstCard = track.querySelector(".workshop-video-card");
+        const cardWidth = firstCard ? firstCard.getBoundingClientRect().width : track.clientWidth;
+        const gap = parseFloat(window.getComputedStyle(track).columnGap) || 0;
+
+        track.scrollBy({
+            left: direction * (cardWidth + gap),
+            behavior: "smooth",
+        });
+    };
+
+    previousButton.addEventListener("click", () => {
+        pauseWorkshopVideos(track);
+        scrollByVideo(-1);
+    });
+
+    nextButton.addEventListener("click", () => {
+        pauseWorkshopVideos(track);
+        scrollByVideo(1);
+    });
+}
+
+function pauseWorkshopVideos(track) {
+    track.querySelectorAll("video").forEach((video) => {
+        video.pause();
     });
 }
