@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     startCountUpAnimation();
     startImageLoop();
     startPaintingGalleryModal();
-    startWorkshopCarousel();
+    startLazyVideoLoading();
 });
 
 function startCountUpAnimation() {
@@ -78,39 +78,31 @@ function startPaintingGalleryModal() {
     });
 }
 
-function startWorkshopCarousel() {
-    const track = document.querySelector("[data-workshop-track]");
-    const previousButton = document.querySelector("[data-workshop-prev]");
-    const nextButton = document.querySelector("[data-workshop-next]");
+function startLazyVideoLoading() {
+    const lazyVideos = document.querySelectorAll("video[preload='none']");
 
-    if (!track || !previousButton || !nextButton) {
+    if (!lazyVideos.length) {
         return;
     }
 
-    const scrollByVideo = (direction) => {
-        const firstCard = track.querySelector(".workshop-video-card");
-        const cardWidth = firstCard ? firstCard.getBoundingClientRect().width : track.clientWidth;
-        const gap = parseFloat(window.getComputedStyle(track).columnGap) || 0;
-
-        track.scrollBy({
-            left: direction * (cardWidth + gap),
-            behavior: "smooth",
+    if (!("IntersectionObserver" in window)) {
+        lazyVideos.forEach((video) => {
+            video.preload = "metadata";
         });
-    };
+        return;
+    }
 
-    previousButton.addEventListener("click", () => {
-        pauseWorkshopVideos(track);
-        scrollByVideo(-1);
-    });
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                const video = entry.target;
+                video.preload = "metadata";
+                observer.unobserve(video);
+            }
+        });
+    }, { threshold: 0.25 });
 
-    nextButton.addEventListener("click", () => {
-        pauseWorkshopVideos(track);
-        scrollByVideo(1);
-    });
-}
-
-function pauseWorkshopVideos(track) {
-    track.querySelectorAll("video").forEach((video) => {
-        video.pause();
+    lazyVideos.forEach((video) => {
+        observer.observe(video);
     });
 }
