@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
   renderPaintingGallery();
   startPaintingGalleryModal();
   startLazyVideoLoading();
+  DownTimeWarning();
+  HideDownTimeWarning();
 });
 
 const paintingGalleryItems = [
@@ -16,9 +18,6 @@ const paintingGalleryItems = [
     alt: "لوحة فنية من أعمال أروى 1",
     width: 1200,
     height: 1600,
-    description: `الفنانة التشكيلية أروى أحمد الضيفي – تحليق النسر في الهواء
-أروى أحمد الضيفي, فن تشكيلي, طائر جارح, نسر, تحليق, ريش, ألوان طبيعية, خلفية ضبابية, تفاصيل دقيقة, لوحة زيتية, فن حديث
-`,
   },
   {
     id: 2,
@@ -29,8 +28,6 @@ const paintingGalleryItems = [
     alt: "لوحة فنية من أعمال أروى 2",
     width: 1200,
     height: 1600,
-    description: `الفنانة التشكيلية أروى أحمد الضيفي – احتضان عاطفي بين الجيل القديم والجيل الصغير
-أروى أحمد الضيفي, فن تشكيلي, رسم بالفحم, مشاعر, احتضان, جيل قديم, جيل صغير, تفاصيل دقيقة, لوحة عاطفية, فن معاصر`,
   },
   {
     id: 3,
@@ -41,8 +38,6 @@ const paintingGalleryItems = [
     alt: "لوحة فنية من أعمال أروى 3",
     width: 1170,
     height: 1466,
-    description: `الفنانة التشكيلية أروى أحمد الضيفي – وجه محاصر بالورق  
-أروى أحمد الضيفي, فن تشكيلي, وجه, ورق ملفوف, ديكستر مورغان, مسلسل ديكستر, قاتل متسلسل, تفاصيل دقيقة, تعبير, ظلال, فن حديث`,
   },
   {
     id: 4,
@@ -53,7 +48,6 @@ const paintingGalleryItems = [
     alt: "لوحة فنية من أعمال أروى 4",
     width: 1200,
     height: 1600,
-    description: `الفنانة التشكيلية أروى أحمد الضيفي – حصان واقف على قدميه الخلفيتين، ألوان زاهية، حركة، تفاصيل العضلات والفراء، خلفية سماوية، فن تشكيلي حديث، لوحة حيوية، حركة رقص، تعابير الحصان.`,
   },
   {
     id: 5,
@@ -64,8 +58,6 @@ const paintingGalleryItems = [
     alt: "لوحة فنية من أعمال أروى 5",
     width: 1200,
     height: 1600,
-    description: `الفنانة التشكيلية أروى أحمد الضيفي – رسم الملك سلمان ملك المملكة
-أروى أحمد الضيفي, فن تشكيلي, الملك سلمان, شخصية ملكية, وجه, تفاصيل دقيقة, خلفية بسيطة, فن حديث`,
   },
   {
     id: 6,
@@ -76,7 +68,6 @@ const paintingGalleryItems = [
     alt: "لوحة فنية من أعمال أروى 6",
     width: 1440,
     height: 1440,
-    description: `الفنانة التشكيلية أروى أحمد الضيفي – آيات قرآنية مكتوبة بخط عربي متقن ضمن تصميم دائري، ألوان ذهبية وبيضاء على خلفية سوداء، تفاصيل دقيقة، فن حديث، إسلامي، قرآن، مصحف، خطوط عربية، زخارف دائرية، طابع روحاني`,
   },
   {
     id: 7,
@@ -87,9 +78,6 @@ const paintingGalleryItems = [
     alt: "لوحة فنية من أعمال أروى 7",
     width: 1200,
     height: 1600,
-    description: `الفنانة التشكيلية أروى أحمد الضيفي – جملين في الصحراء
-أروى أحمد الضيفي, فن تشكيلي, جملين, بعير, صحراء, حيوانات, طبيعة, تفاصيل دقيقة, فن حديث, ألوان واقعية, واقعية, لوحة بيضاء وخلفية هادئة
-`,
   },
   {
     id: 8,
@@ -100,8 +88,6 @@ const paintingGalleryItems = [
     alt: "لوحة فنية من أعمال أروى 8",
     width: 1170,
     height: 1547,
-    description: `الفنانة التشكيلية أروى أحمد الضيفي – الملك سلمان ملك المملكة العربية السعودية، رسمة للملك سلمان، تفاصيل دقيقة، ألوان طبيعية، تقليد واقعي، خطوط واضحة، وجه الملك، عمامة، ثوب سعودي، خلفية هادئة، فن معاصر، لوحة رسمت بالزيت، صورة شخصية للملك.
-`,
   },
   {
     id: 9,
@@ -112,9 +98,6 @@ const paintingGalleryItems = [
     alt: "لوحة فنية من أعمال أروى 9",
     width: 1170,
     height: 1451,
-    description: `الفنانة التشكيلية أروى أحمد الضيفي – حصان رمادي في الطبيعة
-أروى أحمد الضيفي, فن تشكيلي, حصان, خيل, طبيعة, لوحة واقعية, ألوان طبيعية, تفاصيل دقيقة, حركة الحيوان, خلفية مفتوحة
-`,
   },
   {
     id: 10,
@@ -125,9 +108,6 @@ const paintingGalleryItems = [
     alt: "لوحة فنية من أعمال أروى 10",
     width: 853,
     height: 1280,
-    description: `الفنانة التشكيلية أروى أحمد الضيفي – أمير المملكة محمد بن سلمان، أمير السعودية وولي العهد
-أروى أحمد الضيفي, فن تشكيلي, الملك محمد بن سلمان, ولي العهد, ملك المملكة العربية السعودية, بورتريه, تفاصيل الوجه, ألوان طبيعية, لوحة رسم, فن حديث
-`
   },
   {
     id: 11,
@@ -138,7 +118,6 @@ const paintingGalleryItems = [
     alt: "لوحة فنية من أعمال أروى 11",
     width: 882,
     height: 1280,
-    description: "عمل فني من معرض أروى",
   },
   {
     id: 12,
@@ -149,9 +128,6 @@ const paintingGalleryItems = [
     alt: "لوحة فنية من أعمال أروى 12",
     width: 1023,
     height: 1280,
-    description: `الفنانة التشكيلية أروى أحمد الضيفي – الملك عبد العزيز
-الملك عبد العزيز، مؤسس المملكة العربية السعودية، رسم بورتريه، تقاليد، تاريخ، زعيم، زي شعبي، تفاصيل دقيقة، ألوان زيتية، فن حديث
-`,
   },
   {
     id: 13,
@@ -162,7 +138,6 @@ const paintingGalleryItems = [
     alt: "لوحة فنية من أعمال أروى 13",
     width: 720,
     height: 1280,
-    description: "عمل فني من معرض أروى",
   },
   {
     id: 14,
@@ -173,7 +148,6 @@ const paintingGalleryItems = [
     alt: "لوحة فنية من أعمال أروى 14",
     width: 817,
     height: 1280,
-    description: "عمل فني من معرض أروى",
   },
   {
     id: 15,
@@ -184,9 +158,6 @@ const paintingGalleryItems = [
     alt: "لوحة فنية من أعمال أروى 15",
     width: 885,
     height: 1280,
-    description: `الفنانة التشكيلية أروى أحمد الضيفي – الحاج يدعو في مكة أثناء العمرة
-أروى أحمد الضيفي, فن تشكيلي, حاج, حجاج, عمرة, معتمر, يدين مرفوعتين, خلفية ضبابية, ألوان دافئة, لحظة روحية, تفاصيل دقيقة
-`,
   },
   {
     id: "sold-1",
@@ -197,9 +168,6 @@ const paintingGalleryItems = [
     alt: "لوحة فنية مباعة من أعمال أروى 1",
     width: 1254,
     height: 1254,
-    description: `الفنانة التشكيلية أروى أحمد الضيفي – الجمل في الغروب
-تمت بيع هذه اللوحة.
-أروى أحمد الضيفي, فن تشكيلي, لوحة مباع, جمل, غروب, صحراء, ألوان دافئة, منظر طبيعي, لوحة حمراء, فن ملون`,
   },
   {
     id: "sold-2",
@@ -210,9 +178,6 @@ const paintingGalleryItems = [
     alt: "لوحة فنية مباعة من أعمال أروى 2",
     width: 1254,
     height: 1254,
-    description: `الفنانة التشكيلية أروى أحمد الضيفي – انعكاس المشاعر على اليد
-تمت بيع هذه اللوحة.
-أروى أحمد الضيفي, فن تشكيلي, لوحة مباع, يدين, حبال, ألوان زاهية, حركة, خلفية سوداء, تفاصيل دقيقة, فن حديث`,
   },
   {
     id: "sold-3",
@@ -223,9 +188,6 @@ const paintingGalleryItems = [
     alt: "لوحة فنية مباعة من أعمال أروى 3",
     width: 1448,
     height: 1086,
-    description: `الفنانة التشكيلية أروى أحمد الضيفي – رحلة الإيمان
-تمت بيع هذه اللوحة.
-أروى أحمد الضيفي, فن تشكيلي, لوحة مباع, مصحف, مسبحة, ريشة, ألوان ترابية, خلفية بسيطة, روحانية, لوحة هادئة`,
   },
   {
     id: "sold-4",
@@ -236,9 +198,6 @@ const paintingGalleryItems = [
     alt: "لوحة فنية مباعة من أعمال أروى 4",
     width: 1150,
     height: 1367,
-    description: `الفنانة التشكيلية أروى أحمد الضيفي – الحصان والنظرة
-تمت بيع هذه اللوحة.
-أروى أحمد الضيفي, فن تشكيلي, لوحة مباع, حصان, زي تقليدي, ألوان مختلطة, حركة, واقعية, تفاصيل, فن معاصر`,
   },
 ];
 
@@ -328,7 +287,6 @@ function renderPaintingGallery() {
       "painting-gallery-item flex-shrink-0 border-0 bg-transparent p-0";
     button.type = "button";
     button.dataset.paintingSrc = painting.fullSrc;
-    button.dataset.paintingDescription = painting.description;
     button.setAttribute("aria-label", `Open painting ${painting.id}`);
 
     const picture = document.createElement("picture");
@@ -414,4 +372,48 @@ function startLazyVideoLoading() {
   lazyVideos.forEach((video) => {
     observer.observe(video);
   });
+}
+
+function DownTimeWarning() {
+  const targetDate = new Date("2026-06-12T15:00:00"); // YYYY-MM-DDTHH:MM:SS
+  const divCountdown = document.getElementById("div-countdown");
+  const countdownEl = document.getElementById("countdown");
+
+  if (new Date() < targetDate) {
+    divCountdown.style.display = "block";
+  }
+
+  function updateCountdown() {
+    const now = new Date();
+    const distance = targetDate - now;
+
+    if (distance <= 0) {
+      countdownEl.innerHTML = "We are Back Online!";
+      clearInterval(interval);
+      return;
+    }
+                            // milliseconds to days, hours, minutes, seconds
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
+      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+    );
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    countdownEl.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  }
+
+  // Update every second
+  const interval = setInterval(updateCountdown, 1000);
+  updateCountdown(); // initial call
+}
+
+function HideDownTimeWarning() {
+// Hide the countdown if the current date is past the target date
+  // the date should be the same as the one in DownTimeWarning function
+  // also the day should be two digits for consistency: "2026-06-02T15:00:00"  not like "2026-6-2T15:00:00"
+  if (new Date() >= new Date("2026-06-12T15:00:00")) { 
+    document.getElementById("div-countdown").style.display = "none";
+    document.getElementById("logo-hero").style.display = "block";
+  }
 }

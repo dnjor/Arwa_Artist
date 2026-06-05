@@ -169,11 +169,6 @@ picture {
     object-position: center;
     border-radius: 14px;
     background: var(--accent);
-    color: #fff;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 800;
     box-shadow: 0 10px 25px rgba(130, 91, 248, 0.28);
     padding: 2px;
 }
@@ -210,7 +205,7 @@ picture {
     gap: 0.35rem;
     min-height: 44px;
     white-space: nowrap;
-    transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    transition: transform 0.18s ease;
 }
 
 .nav-inline a:hover {
@@ -246,7 +241,6 @@ picture {
 }
 
 .home-card {
-    gap: clamp(1.75rem, 2vw, 2.25rem);
     overflow: hidden;
 }
 
@@ -336,6 +330,88 @@ picture {
     width: min(100%, 360px);
     border-radius: 0;
     transform: translate(-0.8rem, -1.5rem);
+}
+
+#div-countdown[style*="block"] {
+    display: flex !important;
+    min-height: 380px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.15rem;
+    text-align: center;
+    direction: rtl;
+}
+
+#div-countdown .page-title {
+    order: 1;
+    margin: 0;
+    text-align: center;
+}
+
+#div-countdown #countdown {
+    order: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    color: var(--text);
+    font-size: clamp(1.1rem, 2vw, 1.6rem);
+    font-weight: 800;
+    line-height: 1.3;
+    text-align: center;
+}
+
+#div-countdown picture {
+    order: 3;
+    display: grid;
+    width: 100%;
+    place-items: center;
+    margin-top: 0.25rem;
+}
+
+#div-countdown .home-image--hand {
+    width: min(100%, 320px);
+    margin-inline: auto;
+    transform: none;
+}
+
+.countdown-register {
+    order: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    margin: 0;
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.7;
+    text-align: center;
+}
+
+.countdown-register-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0.55rem 1.05rem;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #ffffff;
+    font-weight: 800;
+    line-height: 1;
+    text-decoration: none;
+    box-shadow: 0 12px 28px rgba(130, 91, 248, 0.25);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.countdown-register-link:hover {
+    color: #ffffff;
+    text-decoration: none;
+    transform: translateY(-1px);
+    box-shadow: 0 16px 34px rgba(130, 91, 248, 0.32);
 }
 
 .home-image--framed {
@@ -716,6 +792,41 @@ picture {
         transform: none;
     }
 
+    #div-countdown[style*="block"] {
+        min-height: 250px;
+        gap: 0.72rem;
+        padding-block: 0.25rem 0.5rem;
+    }
+
+    #div-countdown .page-title {
+        font-size: clamp(1.55rem, 7vw, 2rem);
+        line-height: 1.15;
+    }
+
+    #div-countdown #countdown {
+        font-size: 0.95rem;
+    }
+
+    #div-countdown picture {
+        margin-top: 0;
+    }
+
+    #div-countdown .home-image--hand {
+        width: min(62vw, 185px);
+    }
+
+    .countdown-register {
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .countdown-register-link {
+        min-height: 36px;
+        padding: 0.48rem 0.85rem;
+    }
+
     .painting-gallery-heading {
         padding-inline: 14px;
     }
@@ -761,9 +872,4 @@ picture {
         display: none;
     }
 
-    .metric-row {
-        display: grid;
-        gap: 0.85rem;
-        grid-template-columns: 1fr;
-    }
 }
