@@ -44,10 +44,10 @@ const paintingGalleryItems = [
     fullSrc: "static/pic/painting-4.webp",
     srcset:
       "static/pic/painting-4-400.webp 400w, static/pic/painting-4.webp 600w",
-    fallbackSrc: "static/pic/painting_%20(4).jpeg",
+    fallbackSrc: "static/pic/WhatsApp%20Image%202026-06-06%20at%209.09.03%20AM.jpeg",
     alt: "لوحة فنية من أعمال أروى 4",
-    width: 1200,
-    height: 1600,
+    width: 742,
+    height: 1078,
   },
   {
     id: 5,

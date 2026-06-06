@@ -67,6 +67,65 @@ picture {
     max-width: 100%;
 }
 
+.d-flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.min-vh-100 {
+    min-height: 100vh;
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem;
+}
+
+.mb-5 {
+    margin-bottom: 3rem;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.g-4 {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 1.5rem;
+}
+
+.row > * {
+    width: 100%;
+    max-width: 100%;
+    padding-right: calc(var(--bs-gutter-x, 0) * 0.5);
+    padding-left: calc(var(--bs-gutter-x, 0) * 0.5);
+    margin-top: var(--bs-gutter-y, 0);
+}
+
+@media (min-width: 992px) {
+    .col-lg-5 {
+        flex: 0 0 auto;
+        width: 41.66666667%;
+    }
+
+    .col-lg-7 {
+        flex: 0 0 auto;
+        width: 58.33333333%;
+    }
+
+    .g-xl-5 {
+        --bs-gutter-x: 3rem;
+        --bs-gutter-y: 3rem;
+    }
+}
+
 .site-shell {
     width: 100%;
     margin: 0;
@@ -241,6 +300,7 @@ picture {
 }
 
 .home-card {
+    gap: clamp(1.75rem, 2vw, 2.25rem);
     overflow: hidden;
 }
 
@@ -338,7 +398,8 @@ picture {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1.15rem;
+    gap: 1.35rem;
+    padding-bottom: 1.5rem;
     text-align: center;
     direction: rtl;
 }
@@ -369,7 +430,7 @@ picture {
     display: grid;
     width: 100%;
     place-items: center;
-    margin-top: 0.25rem;
+    margin-top: 0.2rem;
 }
 
 #div-countdown .home-image--hand {
@@ -384,7 +445,7 @@ picture {
     align-items: center;
     justify-content: center;
     gap: 0.55rem;
-    margin: 0;
+    margin: 0 0 0.8rem;
     color: var(--muted);
     font-size: 1rem;
     line-height: 1.7;
@@ -794,8 +855,8 @@ picture {
 
     #div-countdown[style*="block"] {
         min-height: 250px;
-        gap: 0.72rem;
-        padding-block: 0.25rem 0.5rem;
+        gap: 0.95rem;
+        padding-block: 0.25rem 1.1rem;
     }
 
     #div-countdown .page-title {
@@ -818,6 +879,7 @@ picture {
     .countdown-register {
         flex-wrap: wrap;
         gap: 0.4rem;
+        margin-bottom: 0.7rem;
         font-size: 0.9rem;
         line-height: 1.5;
     }
