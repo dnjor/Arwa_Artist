@@ -44,7 +44,8 @@ const paintingGalleryItems = [
     fullSrc: "static/pic/painting-4.webp",
     srcset:
       "static/pic/painting-4-400.webp 400w, static/pic/painting-4.webp 600w",
-    fallbackSrc: "static/pic/WhatsApp%20Image%202026-06-06%20at%209.09.03%20AM.jpeg",
+    fallbackSrc:
+      "static/pic/WhatsApp%20Image%202026-06-06%20at%209.09.03%20AM.jpeg",
     alt: "لوحة فنية من أعمال أروى 4",
     width: 742,
     height: 1078,
@@ -160,6 +161,16 @@ const paintingGalleryItems = [
     height: 1280,
   },
   {
+    id: 16,
+    fullSrc: "static/pic/painting-16.webp",
+    srcset:
+      "static/pic/painting-16-400.webp 400w, static/pic/painting-16.webp 600w",
+    fallbackSrc: "static/pic/painting_%20(16).jpeg",
+    alt: "لوحة فنية من أعمال أروى 16",
+    width: 885,
+    height: 1280,
+  },
+  {
     id: "sold-1",
     fullSrc: "static/pic/painting-sold-1.webp",
     srcset:
@@ -221,6 +232,7 @@ const paintingGalleryOrder = [
   "sold-4",
   14,
   15,
+  16,
 ];
 
 function startCountUpAnimation() {
@@ -375,7 +387,7 @@ function startLazyVideoLoading() {
 }
 
 function DownTimeWarning() {
-  const targetDate = new Date("2026-06-12T15:00:00"); // YYYY-MM-DDTHH:MM:SS
+  const targetDate = new Date("2026-07-04T15:00:00"); // YYYY-MM-DDTHH:MM:SS
   const divCountdown = document.getElementById("div-countdown");
   const countdownEl = document.getElementById("countdown");
 
@@ -392,7 +404,7 @@ function DownTimeWarning() {
       clearInterval(interval);
       return;
     }
-                            // milliseconds to days, hours, minutes, seconds
+    // milliseconds to days, hours, minutes, seconds
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor(
       (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
@@ -409,10 +421,10 @@ function DownTimeWarning() {
 }
 
 function HideDownTimeWarning() {
-// Hide the countdown if the current date is past the target date
+  // Hide the countdown if the current date is past the target date
   // the date should be the same as the one in DownTimeWarning function
   // also the day should be two digits for consistency: "2026-06-02T15:00:00"  not like "2026-6-2T15:00:00"
-  if (new Date() >= new Date("2026-06-12T15:00:00")) { 
+  if (new Date() >= new Date("2026-07-04T15:00:00")) {
     document.getElementById("div-countdown").style.display = "none";
     document.getElementById("logo-hero").style.display = "block";
   }
