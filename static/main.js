@@ -4,8 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderPaintingGallery();
   startPaintingGalleryModal();
   startLazyVideoLoading();
-  DownTimeWarning();
-  HideDownTimeWarning();
+  startWorkshopCountdown();
 });
 
 const paintingGalleryItems = [
@@ -171,6 +170,16 @@ const paintingGalleryItems = [
     height: 1280,
   },
   {
+    id: 17,
+    fullSrc: "static/pic/painting-17.webp",
+    srcset:
+      "static/pic/painting-17-400.webp 400w, static/pic/painting-17.webp 1200w",
+    fallbackSrc: "static/pic/painting-17.jpg",
+    alt: "لوحة طبيعة صامتة لزهور دوار الشمس والليمون وطائر وسلة وإبريق سقاية من أعمال أروى",
+    width: 1200,
+    height: 1600,
+  },
+  {
     id: "sold-1",
     fullSrc: "static/pic/painting-sold-1.webp",
     srcset:
@@ -233,7 +242,10 @@ const paintingGalleryOrder = [
   14,
   15,
   16,
+  17,
 ];
+
+const workshopStartDate = new Date("2026-08-01T15:00:00+03:00");
 
 function startCountUpAnimation() {
   const countUpElements = document.querySelectorAll(".animation-count-up");
@@ -386,25 +398,27 @@ function startLazyVideoLoading() {
   });
 }
 
-function DownTimeWarning() {
-  const targetDate = new Date("2026-07-04T15:00:00"); // YYYY-MM-DDTHH:MM:SS
+function startWorkshopCountdown() {
   const divCountdown = document.getElementById("div-countdown");
   const countdownEl = document.getElementById("countdown");
-
-  if (new Date() < targetDate) {
-    divCountdown.style.display = "block";
-  }
+  const logoHero = document.getElementById("logo-hero");
 
   function updateCountdown() {
     const now = new Date();
-    const distance = targetDate - now;
+    const distance = workshopStartDate - now;
 
     if (distance <= 0) {
-      countdownEl.innerHTML = "We are Back Online!";
-      clearInterval(interval);
+      divCountdown.style.display = "none";
+      logoHero.style.display = "block";
+      if (interval) {
+        clearInterval(interval);
+      }
       return;
     }
-    // milliseconds to days, hours, minutes, seconds
+
+    divCountdown.style.display = "block";
+    logoHero.style.display = "none";
+
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor(
       (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
@@ -415,17 +429,10 @@ function DownTimeWarning() {
     countdownEl.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
   }
 
-  // Update every second
-  const interval = setInterval(updateCountdown, 1000);
-  updateCountdown(); // initial call
-}
+  let interval = null;
+  updateCountdown();
 
-function HideDownTimeWarning() {
-  // Hide the countdown if the current date is past the target date
-  // the date should be the same as the one in DownTimeWarning function
-  // also the day should be two digits for consistency: "2026-06-02T15:00:00"  not like "2026-6-2T15:00:00"
-  if (new Date() >= new Date("2026-07-04T15:00:00")) {
-    document.getElementById("div-countdown").style.display = "none";
-    document.getElementById("logo-hero").style.display = "block";
+  if (new Date() < workshopStartDate) {
+    interval = setInterval(updateCountdown, 1000);
   }
 }
