@@ -245,7 +245,7 @@ const paintingGalleryOrder = [
   17,
 ];
 
-const workshopStartDate = new Date("2026-08-01T15:00:00+03:00");
+const workshopStartDate = new Date("2026-08-22T15:00:00+03:00");
 
 function startCountUpAnimation() {
   const countUpElements = document.querySelectorAll(".animation-count-up");
