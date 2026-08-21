@@ -180,6 +180,16 @@ const paintingGalleryItems = [
     height: 1600,
   },
   {
+    id: 18,
+    fullSrc: "static/pic/painting-18.webp",
+    srcset:
+      "static/pic/painting-18-400.webp 400w, static/pic/painting-18.webp 600w",
+    fallbackSrc: "static/pic/painting_%20(18).jpeg",
+    alt: "لوحة فنية من أعمال أروى 18",
+    width: 885,
+    height: 1280,
+  },
+  {
     id: "sold-1",
     fullSrc: "static/pic/painting-sold-1.webp",
     srcset:
@@ -243,6 +253,7 @@ const paintingGalleryOrder = [
   15,
   16,
   17,
+  18,
 ];
 
 const workshopStartDate = new Date("2026-08-22T15:00:00+03:00");
